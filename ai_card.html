@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>人生财富的三大杠杆 - 日式极简风格</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+    <style>
+        /* CSS Variables for easy theme management */
+        :root {
+            --bg-color: #F8F5F2; /* 柔和的米白，类似和纸的质感 */
+            --text-primary: #333333;
+            --text-secondary: #6B6B6B;
+            --border-color: #D1CBC1;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #e0e0e0;
+            font-family: 'Noto Sans SC', sans-serif;
+        }
+
+        .font-serif-sc {
+            font-family: 'Noto Serif SC', serif;
+        }
+        .font-sans-sc {
+            font-family: 'Noto Sans SC', sans-serif;
+        }
+
+        /* 垂直排版 */
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+        
+        #download-btn {
+            margin-top: 2rem;
+            padding: 0.75rem 1.5rem;
+            background-color: var(--text-primary);
+            color: var(--bg-color);
+            border-radius: 4px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        #download-btn:hover {
+            background-color: #000;
+        }
+        #download-link {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-200">
+
+    <div id="htmlContent" class="w-[540px] max-w-[540px] h-[1000px] max-h-[1280px] bg-[var(--bg-color)] p-12 shadow-xl relative flex">
+        <div class="h-full flex flex-col justify-between items-start pr-10 border-r border-[var(--border-color)]">
+            <div class="vertical-text text-[var(--text-secondary)] font-sans-sc tracking-[0.2em] text-sm">
+                2025 : 08.06 TUESDAY
+            </div>
+            
+            <blockquote class="vertical-text font-serif-sc text-2xl text-[var(--text-primary)] tracking-[0.2em] text-center my-auto">
+                把做自己变成一门好生意
+            </blockquote>
+        </div>
+
+        <div class="flex-grow pl-10 flex flex-col">
+            <header class="w-full">
+                <h1 class="font-serif-sc text-5xl font-bold text-[var(--text-primary)] tracking-wider">
+                    人生财富的<br>三大杠杆
+                </h1>
+                <h2 class="font-sans-sc text-lg text-[var(--text-secondary)] mt-3 tracking-widest">
+                    《纳瓦尔宝典》的三大力
+                </h2>
+            </header>
+
+            <div class="my-auto">
+                <h3 class="font-sans-sc text-sm text-[var(--text-secondary)] tracking-[0.3em] mb-6">CORE PRINCIPLES</h3>
+                <ul class="space-y-5">
+                    <li class="font-serif-sc text-xl text-[var(--text-primary)] flex items-center">
+                        <span class="text-base mr-4 font-sans-sc text-[var(--text-secondary)]">01</span> 人力杠杆
+                    </li>
+                    <li class="font-serif-sc text-xl text-[var(--text-primary)] flex items-center">
+                        <span class="text-base mr-4 font-sans-sc text-[var(--text-secondary)]">02</span> 资本杠杆
+                    </li>
+                    <li class="font-serif-sc text-xl text-[var(--text-primary)] flex items-center">
+                        <span class="text-base mr-4 font-sans-sc text-[var(--text-secondary)]">03</span> 内容杠杆
+                    </li>
+                </ul>
+            </div>
+            
+            <footer class="mt-auto flex justify-between items-end">
+                <div class="text-left">
+                     <h4 class="font-sans-sc text-xs text-[var(--text-secondary)] tracking-[0.2em] mb-2">EDITOR'S NOTE</h4>
+                     <p class="font-serif-sc text-base text-[var(--text-primary)]">How to get rich without luck</p>
+                </div>
+                <div class="w-24 h-24 p-1 border border-[var(--border-color)]">
+                    <img src="https://pic.xxx.jpg" alt="QR Code" class="w-full h-full object-cover">
+                </div>
+            </footer>
+        </div>
+    </div>
+    
+    <button id="download-btn">下载卡片</button>
+    <a id="download-link"></a>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#download-btn").on('click', function(){
+                html2canvas(document.querySelector("#htmlContent"), {
+                    useCORS: true, // 允许加载跨域图片
+                    scale: 2 // 提高截图清晰度
+                }).then(canvas => {
+                    var imageData = canvas.toDataURL("image/jpeg", 1.0); // 使用JPEG格式并设置质量
+                    var link = document.getElementById('download-link');
+                    link.href = imageData;
+                    link.download = 'Knowledge-Card-Japanese-Minimalism.jpg';
+                    link.click();
+                });
+            });
+        });
+    </script>
+</body>
+</html>
